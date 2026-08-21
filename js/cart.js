@@ -303,12 +303,24 @@
                           </div>
                         </div>
                       </label>
+
+                      <!-- InstaPay -->
+                      <label class="payment-option-card" id="payMethodInstaPayCard">
+                        <input type="radio" name="paymentMethod" value="instapay" />
+                        <div class="payment-card-content">
+                          <span class="payment-icon">⚡</span>
+                          <div class="payment-info">
+                            <strong>إنستا باي (InstaPay)</strong>
+                            <p>تحويل فوري من تطبيق إنستا باي إلى حساب المطعم.</p>
+                          </div>
+                        </div>
+                      </label>
                     </div>
 
-                    <!-- Vodafone Cash Details Alert Box (Shown only when Vodafone Cash is selected) -->
+                    <!-- Electronic Payment Details Alert Box -->
                     <div class="vodafone-cash-box" id="vodafoneCashBox" style="display: none;">
                       <div class="voda-header">
-                        <span>📲 رقم محفظة فودافون كاش للمطعم:</span>
+                        <span>📲 بيانات التحويل عبر <strong id="paymentMethodName">فودافون كاش</strong>:</span>
                         <div class="voda-number-row">
                           <strong id="vodaNumberDisplay">${this.config.vodafoneCashNumber}</strong>
                           <button type="button" class="btn btn-sm btn-secondary" id="copyVodaBtn">📋 نسخ الرقم</button>
@@ -317,14 +329,15 @@
                       <div class="voda-instructions">
                         <p>⚠️ <strong>تعليمات التحويل:</strong></p>
                         <ol>
-                          <li>قم بتحويل إجمالي المبلغ (<span id="vodaTotalAmountDisplay">0</span> ج.م) إلى الرقم أعلاه.</li>
+                          <li id="paymentTransferInstruction">قم بتحويل إجمالي المبلغ (<span id="vodaTotalAmountDisplay">0</span> ج.م) إلى الرقم أعلاه.</li>
                           <li>احتفظ برقم العملية أو لقطة شاشة التحويل لتأكيد الطلب مع الكاشير.</li>
-                          <li>(ملاحظة: سيتم تأكيد الدفع ومراجعته يدوياً مع الإدارة فور إرسال رسالة الواتساب).</li>
+                          <li>سيتم تأكيد الدفع ومراجعته يدوياً مع الإدارة فور إرسال رسالة الواتساب.</li>
                         </ol>
                       </div>
                       <div class="form-group" style="margin-top: 12px; margin-bottom: 0;">
-                        <label for="vodaSenderPhone" class="form-label">رقم المحفظة المحول منها أو رقم المعاملة (اختياري):</label>
-                        <input type="text" id="vodaSenderPhone" class="form-input" placeholder="مثال: محول من رقم 010... أو رقم مرجعي" />
+                        <label for="vodaSenderPhone" class="form-label">رقم المحفظة المحول منها أو رقم المعاملة <span class="required">*</span>:</label>
+                        <input type="text" id="vodaSenderPhone" class="form-input" placeholder="مثال: رقم 010... أو رقم مرجعي" />
+                        <div class="field-error" id="paymentTransferError">يرجى إدخال رقم المحفظة المحول منها أو رقم المعاملة.</div>
                       </div>
                     </div>
                   </div>
@@ -686,16 +699,29 @@
     updatePaymentMethodUI() {
       const cashCard = document.getElementById('payMethodCashCard');
       const vodaCard = document.getElementById('payMethodVodafoneCard');
+      const instaPayCard = document.getElementById('payMethodInstaPayCard');
       const vodaBox = document.getElementById('vodafoneCashBox');
+      const paymentMethodName = document.getElementById('paymentMethodName');
+      const transferInstruction = document.getElementById('paymentTransferInstruction');
+      const transferInput = document.getElementById('vodaSenderPhone');
 
       if (this.paymentMethod === 'cash') {
         if (cashCard) cashCard.classList.add('active');
         if (vodaCard) vodaCard.classList.remove('active');
+        if (instaPayCard) instaPayCard.classList.remove('active');
         if (vodaBox) vodaBox.style.display = 'none';
       } else {
         if (cashCard) cashCard.classList.remove('active');
-        if (vodaCard) vodaCard.classList.add('active');
+        if (vodaCard) vodaCard.classList.toggle('active', this.paymentMethod === 'vodafone_cash');
+        if (instaPayCard) instaPayCard.classList.toggle('active', this.paymentMethod === 'instapay');
         if (vodaBox) vodaBox.style.display = 'block';
+        if (paymentMethodName) paymentMethodName.textContent = this.paymentMethod === 'instapay' ? 'إنستا باي' : 'فودافون كاش';
+        if (transferInstruction) {
+          transferInstruction.innerHTML = this.paymentMethod === 'instapay'
+            ? 'قم بتحويل إجمالي المبلغ (<span id="vodaTotalAmountDisplay">0</span> ج.م) عبر إنستا باي إلى الرقم أعلاه.'
+            : 'قم بتحويل إجمالي المبلغ (<span id="vodaTotalAmountDisplay">0</span> ج.م) إلى الرقم أعلاه.';
+        }
+        if (transferInput) transferInput.required = true;
       }
     }
 
@@ -754,6 +780,13 @@
 
       const notes = notesInput ? notesInput.value.trim() : '';
       const vodaSender = vodaSenderInput ? vodaSenderInput.value.trim() : '';
+      const paymentTransferError = document.getElementById('paymentTransferError');
+      if (paymentTransferError) paymentTransferError.style.display = 'none';
+      if (this.paymentMethod !== 'cash' && !vodaSender) {
+        if (paymentTransferError) paymentTransferError.style.display = 'block';
+        if (vodaSenderInput) vodaSenderInput.focus();
+        return;
+      }
       const area = this.config.deliveryAreas.find(a => a.id === this.selectedAreaId);
       const areaName = area ? area.name.ar : 'أسيوط';
 
@@ -778,7 +811,9 @@
       this.showOrderSuccessModal({
         name,
         total: this.getGrandTotal(),
-        paymentMethod: this.paymentMethod === 'cash' ? 'الدفع عند الاستلام (كاش)' : 'فودافون كاش (Vodafone Cash)'
+        paymentMethod: this.paymentMethod === 'cash'
+          ? 'الدفع عند الاستلام (كاش)'
+          : this.paymentMethod === 'instapay' ? 'إنستا باي (InstaPay)' : 'فودافون كاش (Vodafone Cash)'
       });
 
       // Clear the cart for the next fresh order
@@ -820,11 +855,10 @@
       if (data.paymentMethod === 'cash') {
         msg += `*الدفع عند الاستلام (كاش)* 💵\n`;
       } else {
-        msg += `*فودافون كاش* 📱\n`;
+        const paymentLabel = data.paymentMethod === 'instapay' ? '*إنستا باي (InstaPay)* ⚡' : '*فودافون كاش* 📱';
+        msg += `${paymentLabel}\n`;
         msg += `• تم التحويل لمحفظة المطعم: ${this.config.vodafoneCashNumber}\n`;
-        if (data.vodaSender) {
-          msg += `• رقم المعاملة / رقم المحول منه: *${data.vodaSender}*\n`;
-        }
+        msg += `• رقم المعاملة / رقم المحول منه: *${data.vodaSender}*\n`;
       }
 
       if (data.notes) {
