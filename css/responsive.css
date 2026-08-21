@@ -327,6 +327,11 @@ html[dir="rtl"] .footer-link:hover {
     font-size: 1.7rem;
   }
 
+  .cart-floating-btn {
+    right: 14px;
+    bottom: 76px;
+  }
+
   html[dir="rtl"] .floating-whatsapp {
     left: 18px;
   }

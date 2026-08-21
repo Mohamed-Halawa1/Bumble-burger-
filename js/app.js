@@ -65,20 +65,7 @@
       });
     }
 
-    // 3. Attach Order Buttons to WhatsApp Modal
-    document.querySelectorAll('.menu-order-btn, .offer-order-btn').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        const itemName = e.currentTarget.getAttribute('data-item') || 'وجبة بامبل برجر';
-        if (orderEngine) {
-          orderEngine.openOrderModal(itemName);
-        } else {
-          const url = 'https://wa.me/201002194064?text=' + encodeURIComponent('مساء الخير، حابب أطلب ' + itemName + ' من Bumble Burger أسيوط 🍔');
-          window.open(url, '_blank');
-        }
-      });
-    });
-
-    // 4. Mobile Hamburger Menu Toggle
+    // 3. Mobile Hamburger Menu Toggle
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const navMenu = document.getElementById('navMenu');
 
@@ -97,7 +84,7 @@
       });
     }
 
-    // 5. Highlight Active Navigation Link
+    // 4. Highlight Active Navigation Link
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(function (link) {
       const href = link.getAttribute('href');
@@ -106,7 +93,7 @@
       }
     });
 
-    // 6. Sticky Header Shadow on Scroll
+    // 5. Sticky Header Shadow on Scroll
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', function () {
       if (header) {
@@ -118,7 +105,7 @@
       }
     }, { passive: true });
 
-    // 7. Language Switcher (Arabic RTL <-> English LTR)
+    // 6. Language Switcher (Arabic RTL <-> English LTR)
     const langBtn = document.getElementById('langToggleBtn');
     if (langBtn) {
       const savedLang = localStorage.getItem('bumble_lang') || 'ar';

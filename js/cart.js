@@ -10,6 +10,7 @@
 
   class BumbleCartManager {
     constructor() {
+      this.isInitialized = false;
       this.storageKey = 'bumble_cart_v1';
       this.items = [];
       this.selectedAreaId = 'walideyah';
@@ -36,7 +37,11 @@
       };
 
       this.loadCart();
-      document.addEventListener('DOMContentLoaded', () => this.initUI());
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.initUI(), { once: true });
+      } else {
+        this.initUI();
+      }
     }
 
     // --- STORAGE & STATE METHODS ---
@@ -138,6 +143,8 @@
     // --- UI INITIALIZATION & EVENT BINDING ---
 
     initUI() {
+      if (this.isInitialized) return;
+      this.isInitialized = true;
       this.createCartElementsIfMissing();
       this.bindButtons();
       this.updateBadges();
@@ -145,6 +152,15 @@
     }
 
     createCartElementsIfMissing() {
+      if (!document.getElementById('cartFloatingBtn')) {
+        document.body.insertAdjacentHTML('beforeend', `
+          <button class="cart-floating-btn" id="cartFloatingBtn" type="button" aria-label="فتح سلة الطلبات">
+            <span aria-hidden="true">🛒</span><span>السلة</span><b class="cart-badge empty">0</b>
+          </button>
+        `);
+        document.getElementById('cartFloatingBtn').addEventListener('click', () => this.openCartDrawer());
+      }
+
       // 1. Cart Drawer Backdrop & Container
       if (!document.getElementById('cartDrawerBackdrop')) {
         const drawerHTML = `
@@ -489,6 +505,15 @@
 
       // Delegate "Add to Cart" and "Order Now" on document
       document.addEventListener('click', (e) => {
+        const cartButton = e.target.closest('.qty-minus, .qty-plus, .cart-item-remove-btn');
+        if (cartButton) {
+          const id = cartButton.getAttribute('data-id');
+          if (cartButton.classList.contains('qty-minus')) this.updateQuantity(id, -1);
+          if (cartButton.classList.contains('qty-plus')) this.updateQuantity(id, 1);
+          if (cartButton.classList.contains('cart-item-remove-btn')) this.removeItem(id);
+          return;
+        }
+
         const addBtn = e.target.closest('.add-to-cart-btn, .menu-order-btn, .offer-order-btn');
         if (addBtn) {
           // If it's a card order button, extract details
@@ -516,6 +541,14 @@
             }, 1200);
           }
         }
+      });
+
+      document.addEventListener('change', (e) => {
+        if (!e.target.classList.contains('cart-item-notes-input')) return;
+        const item = this.items.find(cartItem => cartItem.id === e.target.dataset.id);
+        if (!item) return;
+        item.notes = e.target.value.trim();
+        this.saveCart();
       });
     }
 
@@ -599,7 +632,8 @@
           <div class="cart-item-info">
             <h4 class="cart-item-name">${item.name}</h4>
             <div class="cart-item-unit-price">${item.price} ${currency}</div>
-            ${item.notes ? `<p class="cart-item-notes">📝 ${item.notes}</p>` : ''}
+            <label class="cart-item-notes-label" for="cart-notes-${item.id}">ملاحظة للصنف (اختياري)</label>
+            <textarea class="cart-item-notes-input" id="cart-notes-${item.id}" data-id="${item.id}" rows="2" maxlength="180" placeholder="مثال: بدون بصل، صوص إضافي...">${item.notes || ''}</textarea>
             
             <div class="cart-qty-controls">
               <button class="cart-qty-btn qty-minus" data-id="${item.id}" aria-label="Decrease quantity">−</button>
@@ -614,27 +648,6 @@
         </div>
       `).join('');
 
-      // Bind quantity buttons inside drawer
-      listContainer.querySelectorAll('.qty-minus').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.currentTarget.getAttribute('data-id');
-          this.updateQuantity(id, -1);
-        });
-      });
-
-      listContainer.querySelectorAll('.qty-plus').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.currentTarget.getAttribute('data-id');
-          this.updateQuantity(id, 1);
-        });
-      });
-
-      listContainer.querySelectorAll('.cart-item-remove-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.currentTarget.getAttribute('data-id');
-          this.removeItem(id);
-        });
-      });
     }
 
     renderCheckoutSummary() {
@@ -861,6 +874,8 @@
     }
   }
 
-  // Instantiate Global Cart Manager
-  window.BumbleCart = new BumbleCartManager();
+  // Instantiate the manager only once, even if a page includes the script twice.
+  if (!window.BumbleCart) {
+    window.BumbleCart = new BumbleCartManager();
+  }
 })();
