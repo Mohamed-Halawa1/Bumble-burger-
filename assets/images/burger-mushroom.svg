@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="500" height="380">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#262633" />
+      <stop offset="100%" stop-color="#101015" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48BB78" />
+      <stop offset="100%" stop-color="#FFA000" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="380" rx="24" fill="url(#bgGrad)"/>
+  
+  <!-- Ambient Spotlight circles -->
+  <circle cx="250" cy="180" r="140" fill="#48BB78" opacity="0.12" />
+  <circle cx="250" cy="180" r="90" fill="#FFB800" opacity="0.08" />
+  
+  <!-- Outer glowing rings -->
+  <circle cx="250" cy="180" r="130" fill="none" stroke="#48BB78" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.25"/>
+  
+  <!-- Plate / Shadow -->
+  <ellipse cx="250" cy="275" rx="160" ry="24" fill="#050508" opacity="0.8"/>
+  <ellipse cx="250" cy="270" rx="140" ry="14" fill="#0C0C10" opacity="0.9" stroke="#48BB78" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- Main Center Graphic Item -->
+  <g transform="translate(130, 60)" filter="url(#shadow)">
+    <!-- Visual rendering based on type -->
+    
+        <!-- Top Bun -->
+        <path d="M20 70 C20 15, 220 15, 220 70 Z" fill="#E5983B" stroke="#D38222" stroke-width="2"/>
+        <path d="M40 50 C40 25, 200 25, 200 50 Z" fill="#FFB347" opacity="0.3"/>
+        <!-- Sesame Seeds -->
+        <ellipse cx="70" cy="45" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(-15 70 45)"/>
+        <ellipse cx="110" cy="35" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(10 110 35)"/>
+        <ellipse cx="150" cy="38" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(-5 150 38)"/>
+        <ellipse cx="180" cy="50" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(20 180 50)"/>
+        <ellipse cx="90" cy="55" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(-8 90 55)"/>
+        <ellipse cx="135" cy="52" rx="3.5" ry="2" fill="#FFF8DC" transform="rotate(15 135 52)"/>
+        
+        <!-- Lettuce -->
+        <path d="M10 70 Q35 85, 60 70 Q85 88, 110 70 Q135 88, 160 70 Q185 88, 210 70 Q225 82, 235 70 L230 76 Q185 95, 120 90 Q60 95, 10 76 Z" fill="#48BB78"/>
+        
+        <!-- Tomato Slice -->
+        <rect x="25" y="77" width="190" height="12" rx="6" fill="#E53E3E"/>
+        <circle cx="65" cy="83" r="3" fill="#FEB2B2" opacity="0.8"/>
+        <circle cx="120" cy="83" r="3" fill="#FEB2B2" opacity="0.8"/>
+        <circle cx="175" cy="83" r="3" fill="#FEB2B2" opacity="0.8"/>
+        
+        <!-- Molten Cheddar Drips -->
+        <path d="M15 88 C35 88, 45 110, 60 95 C75 115, 95 90, 115 110 C135 90, 155 115, 175 92 C195 112, 215 88, 228 88 L225 94 C215 105, 195 125, 175 105 C155 125, 135 102, 115 122 C95 102, 75 125, 60 105 C45 120, 25 100, 15 94 Z" fill="#FFB800"/>
+        
+        <!-- Smashed Beef Patty -->
+        <rect x="12" y="96" width="216" height="24" rx="8" fill="#4A2511" stroke="#361706" stroke-width="2"/>
+        <!-- Grill lines -->
+        <line x1="40" y1="99" x2="60" y2="117" stroke="#2B1103" stroke-width="3" stroke-linecap="round"/>
+        <line x1="80" y1="99" x2="100" y2="117" stroke="#2B1103" stroke-width="3" stroke-linecap="round"/>
+        <line x1="120" y1="99" x2="140" y2="117" stroke="#2B1103" stroke-width="3" stroke-linecap="round"/>
+        <line x1="160" y1="99" x2="180" y2="117" stroke="#2B1103" stroke-width="3" stroke-linecap="round"/>
+        
+        <!-- Caramelized Onions / Bacon -->
+        <path d="M25 120 Q120 132, 215 120" stroke="#975A16" stroke-width="5" stroke-linecap="round"/>
+        
+        <!-- Bottom Bun -->
+        <path d="M20 126 C20 155, 220 155, 220 126 Z" fill="#D38222" stroke="#B76B13" stroke-width="2"/>
+        <path d="M25 126 L215 126 L210 136 Q120 148, 30 136 Z" fill="#FFB347" opacity="0.4"/>
+        
+  </g>
+  
+  <!-- Floating Signature Badge -->
+  <g transform="translate(30, 30)">
+    <rect width="170" height="34" rx="17" fill="#181822" stroke="#48BB78" stroke-width="1.5"/>
+    <text x="85" y="21" font-family="'Outfit', 'Cairo', sans-serif" font-size="12" font-weight="800" fill="#FFB800" text-anchor="middle" letter-spacing="1">
+      CHEF SIGNATURE
+    </text>
+  </g>
+  
+  <!-- Bottom info bar -->
+  <rect x="30" y="315" width="440" height="42" rx="12" fill="#14141C" stroke="#2C2C38" stroke-width="1"/>
+  <text x="50" y="341" font-family="'Cairo', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+    سموكي مشروم آند سويس
+  </text>
+  <text x="450" y="340" font-family="'Outfit', sans-serif" font-size="13" font-weight="600" fill="#FFB800" text-anchor="end">
+    Smoky Mushroom & Swiss
+  </text>
+</svg>

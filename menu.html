@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <title>المنيو | Bumble Burger أسيوط - برجر لحم وفراخ وأطباق خاصة</title>
+  <meta name="title" content="المنيو | Bumble Burger أسيوط - برجر لحم وفراخ وأطباق خاصة" />
+  <meta name="description" content="استكشف منيو بامبل برجر في أسيوط: اتشيكن ايلاند، المطافي، اوفر دوس، بابارازى، بابو، باركو، باظ، البوب، والوجبات الكومبو. اطلب أونلاين عبر واتساب!" />
+  <meta name="keywords" content="منيو بامبل برجر, منيو برجر أسيوط, اسعار برجر اسيوط, اتشيكن ايلاند, المطافي, اوفر دوس, بابارازى, باركو, باظ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bumbleburger-assiut.com/menu.html" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <meta name="theme-color" content="#0A0A0D" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Bumble Burger Homepage">
+        <img src="assets/images/logo.svg" alt="Bumble Burger Logo" />
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="menu.html" class="nav-link active" data-i18n="nav.menu">المنيو</a></li>
+          <li><a href="offers.html" class="nav-link" data-i18n="nav.offers">العروض</a></li>
+          <li><a href="why-us.html" class="nav-link" data-i18n="nav.whyUs">ليه بامبل؟</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="nav.about">عن المطعم والفرع</a></li>
+          <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">تواصل معنا</a></li>
+
+          <li class="mobile-menu-cta">
+            <a href="https://wa.me/201002194064" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
+              <span>📱</span> <span data-i18n="nav.orderNow">اطلب الآن</span>
+            </a>
+            <a href="https://maps.app.goo.gl/h84HjgWTiHUpDgiaA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              <span>📍</span> <span data-i18n="nav.directions">الاتجاهات</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="langToggleBtn" class="lang-toggle-btn" aria-label="Switch Language">
+          🌐 English
+        </button>
+        <a href="https://wa.me/201002194064" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          <span>🍔</span> <span data-i18n="nav.orderNow">اطلب الآن</span>
+        </a>
+        <a href="https://maps.app.goo.gl/h84HjgWTiHUpDgiaA" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+          <span>📍</span> <span data-i18n="nav.directions">الاتجاهات</span>
+        </a>
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-badge" data-i18n="menu.sectionBadge">قائمتنا اللذيذة</div>
+        <h1 class="page-hero-title" data-i18n="menu.title">منيو Bumble Burger</h1>
+        <p class="page-hero-subtitle" data-i18n="menu.subtitle">
+          كل ساندوتش معمول بمكونات طازجة وصوصات سرية تفتح نفسك.
+        </p>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+          <span>/</span>
+          <span class="current" data-i18n="nav.menu">المنيو</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- FULL MENU SECTION -->
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <!-- Search & Filter Controls -->
+        <div class="menu-controls">
+          <div class="menu-search-wrapper">
+            <span class="menu-search-icon">🔍</span>
+            <input
+              type="text"
+              id="menuSearchInput"
+              class="menu-search-input"
+              placeholder="ابحث في المنيو (مثل: اتشيكن ايلاند، المطافي، اوفر دوس، باظ)..."
+              aria-label="Search menu items"
+            />
+          </div>
+
+          <!-- Category Buttons -->
+          <div class="categories-bar" id="categoriesBar">
+            <button class="category-btn active" data-category="all"><span>✨</span> <span>الكل</span></button>
+            <button class="category-btn" data-category="chicken"><span>🍗</span> <span>برجر فراخ</span></button>
+            <button class="category-btn" data-category="burgers"><span>🍔</span> <span>برجر لحم</span></button>
+            <button class="category-btn" data-category="specialty"><span>🍕</span> <span>أطباق خاصة</span></button>
+            <button class="category-btn" data-category="meals"><span>🍟</span> <span>وجبات كومبو</span></button>
+            <button class="category-btn" data-category="fries"><span>🧀</span> <span>بطاطس ومقبلات</span></button>
+            <button class="category-btn" data-category="sauces"><span>🥣</span> <span>صوصات</span></button>
+            <button class="category-btn" data-category="drinks"><span>🥤</span> <span>مشروبات</span></button>
+          </div>
+        </div>
+
+        <!-- Pre-rendered Static Menu Cards Grid -->
+        <div class="menu-items-grid" id="menuItemsGrid">
+
+          <!-- 1. اتشيكن ايلاند -->
+          <article class="menu-item-card" data-category="chicken" data-name="اتشيكن ايلاند chicken island فراخ كرسبي">
+            <div class="menu-item-thumb">
+              <img src="assets/images/chicken-island.svg" alt="اتشيكن ايلاند - Chicken Island" loading="lazy" />
+              <span class="item-badge">الأكثر طلباً 🔥</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">اتشيكن ايلاند</h3>
+              <p class="menu-item-desc">صدر فراخ كرسبي مقرمش مع حلقة بصل مقلية ذهبية، صوص جبنة بيضاء شيدر سايحة، خس طازج، وخردل مميز في عيش بريوش طري.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">165 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="اتشيكن ايلاند (Chicken Island)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. المطافي -->
+          <article class="menu-item-card" data-category="chicken" data-name="المطافي el matafi سبايسي حار نار فراخ">
+            <div class="menu-item-thumb">
+              <img src="assets/images/el-matafi.svg" alt="المطافي - El Matafi" loading="lazy" />
+              <span class="item-badge">سبايسي نار 🌶️🔥</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">المطافي</h3>
+              <p class="menu-item-desc">لعشاق السبايسي والتحدي! صدر دجاج مقرمش مغطى بصوص الشطة والبهارات الحارة، مخلل، خس فريش، وصوص المطافي الناري.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">140 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="المطافي (El Matafi)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. اوفر دوس -->
+          <article class="menu-item-card" data-category="chicken" data-name="اوفر دوس overdose برج كرسبي عملاق">
+            <div class="menu-item-thumb">
+              <img src="assets/images/overdose.svg" alt="اوفر دوس - Overdose" loading="lazy" />
+              <span class="item-badge">سوبر جاينت 🍔👑</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">اوفر دوس</h3>
+              <p class="menu-item-desc">برج كرسبي عملاق! طبقات مضاعفة من صدور الدجاج المقرمشة، جبنة شيدر سايحة، رانش، خس، صوص بامبل السري + كانز مثلج.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">240 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="اوفر دوس (Overdose)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. بابارازى -->
+          <article class="menu-item-card" data-category="chicken" data-name="بابارازى paparazzi كرسبي جولد">
+            <div class="menu-item-thumb">
+              <img src="assets/images/paparazzi.svg" alt="بابارازى - Paparazzi" loading="lazy" />
+              <span class="item-badge">مميز ✨</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">بابارازى</h3>
+              <p class="menu-item-desc">صدر دجاج كرسبي جولد متبل بتتبيلة بامبل الحصرية، جبنة شيدر، شرائح طماطم فريش، خس مقرمش، وصوص بابارازى الكريمي.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">165 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="بابارازى (Paparazzi)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. بابو -->
+          <article class="menu-item-card" data-category="chicken" data-name="بابو babu شيدر لافا">
+            <div class="menu-item-thumb">
+              <img src="assets/images/babu.svg" alt="بابو - Babu" loading="lazy" />
+              <span class="item-badge">قنبلة الجبنة 🧀</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">بابو</h3>
+              <p class="menu-item-desc">قطعة فراخ كرسبي عملاقة مغطاة بطبقات من صوص الجبنة الشيدر الذهبية، خس، ومايونيز كريمي في عيش بريوش فاخر.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">135 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="بابو (Babu)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. باركو -->
+          <article class="menu-item-card" data-category="chicken" data-name="باركو barco بيكون مدخن بسطرمة">
+            <div class="menu-item-thumb">
+              <img src="assets/images/barco.svg" alt="باركو - Barco" loading="lazy" />
+              <span class="item-badge">بيكون مدخن 🥓</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">باركو</h3>
+              <p class="menu-item-desc">صدر فراخ مقرمش محمل بقطع البيكون البقري المدخن / البسطرمة، صوص جبنة أبيض غني، صوص باربكيو مدخن، وطماطم فريش.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">175 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="باركو (Barco)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. باظ -->
+          <article class="menu-item-card" data-category="burgers" data-name="باظ buzz baz لحم موتزاريلا ستيك">
+            <div class="menu-item-thumb">
+              <img src="assets/images/buzz.svg" alt="باظ - Buzz" loading="lazy" />
+              <span class="item-badge">موتزاريلا كرانش 🧀</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">باظ</h3>
+              <p class="menu-item-desc">شريحة لحم بلدي مشوية مع قطعة موتزاريلا ستيك مقلية مقرمشة، صوص جبنة سايحة، مخلل، وخس في خبز بريوش طازج.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">135 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="باظ (Buzz)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. البوب -->
+          <article class="menu-item-card" data-category="specialty" data-name="البوب el pop طبق كرسبي سلامي بيبروني">
+            <div class="menu-item-thumb">
+              <img src="assets/images/el-pop.svg" alt="البوب - El Pop" loading="lazy" />
+              <span class="item-badge">حصري بامبل 🌟</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">البوب</h3>
+              <p class="menu-item-desc">طبق مميز من قطع الفراخ الكرسبي المقرمشة، مغطاة بقطع السلامي / البيبروني، صوص الطماطم المتبل، والجبنة الموزاريلا والشيدر.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">145 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="البوب (El Pop)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. كلاسيك سماش -->
+          <article class="menu-item-card" data-category="burgers" data-name="بامبل كلاسيك سماش classic smash لحم">
+            <div class="menu-item-thumb">
+              <img src="assets/images/burger-classic.svg" alt="بامبل كلاسيك سماش" loading="lazy" />
+              <span class="item-badge">كلاسيك 🍔</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">بامبل كلاسيك سماش</h3>
+              <p class="menu-item-desc">شريحة لحم بلدي مشوية على الجريل، جبنة شيدر سايحة، صوص بامبل السري، خس طازج، مخلل، وبصل مكرمل.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">110 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="بامبل كلاسيك سماش">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. دبل تشيز بومب -->
+          <article class="menu-item-card" data-category="burgers" data-name="دبل تشيز بومب double cheese لحم">
+            <div class="menu-item-thumb">
+              <img src="assets/images/burger-double.svg" alt="دبل تشيز بومب" loading="lazy" />
+              <span class="item-badge">دبل باتي 🥩</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">دبل تشيز بومب</h3>
+              <p class="menu-item-desc">قطعتين لحم جوسي مع طبقات مضاعفة من صوص الجبنة الشيدر الذهبية، بيكون بقري مقرمش، وصوص باربكيو مدخن.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">155 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="دبل تشيز بومب">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. وجبة بامبل الفردية -->
+          <article class="menu-item-card" data-category="meals" data-name="وجبة بامبل الفردية combo solo meal">
+            <div class="menu-item-thumb">
+              <img src="assets/images/combo-solo.svg" alt="وجبة بامبل الفردية" loading="lazy" />
+              <span class="item-badge">قيمة عالية 🌟</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">وجبة بامبل الفردية</h3>
+              <p class="menu-item-desc">أي ساندوتش برجر من اختيارك + بطاطس مقرمشة متبلة + مشروب غازي مثلج + صوص شيدر.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">165 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="وجبة بامبل الفردية">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12. وجبة الثنائي -->
+          <article class="menu-item-card" data-category="meals" data-name="وجبة الثنائي double treat meal combo">
+            <div class="menu-item-thumb">
+              <img src="assets/images/combo-duo.svg" alt="وجبة الثنائي" loading="lazy" />
+              <span class="item-badge">لشخصين 👥</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">وجبة الثنائي (دابل تريت)</h3>
+              <p class="menu-item-desc">2 ساندوتش برجر + لارج فرايز محملة بالجبنة + 2 مشروب غازي + 2 صوص.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">290 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="وجبة الثنائي (دابل تريت)">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 13. لودد تشيز فرايز -->
+          <article class="menu-item-card" data-category="fries" data-name="لودد تشيز فرايز loaded cheese بطاطس">
+            <div class="menu-item-thumb">
+              <img src="assets/images/fries-loaded.svg" alt="لودد تشيز فرايز" loading="lazy" />
+              <span class="item-badge">توب سايد ⭐</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">لودد تشيز فرايز</h3>
+              <p class="menu-item-desc">بطاطس ذهبية مقرمشة غرقانة في صوص الجبنة الشيدر، مع لحم مفروم متبل، هالابينو، وصوص بامبل الخاص.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">75 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="لودد تشيز فرايز">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 14. بطاطس كلاسيك مقرمشة -->
+          <article class="menu-item-card" data-category="fries" data-name="بطاطس كلاسيك مقرمشة french fries">
+            <div class="menu-item-thumb">
+              <img src="assets/images/fries-classic.svg" alt="بطاطس كلاسيك مقرمشة" loading="lazy" />
+              <span class="item-badge">مقرمش 🍟</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">بطاطس كلاسيك مقرمشة</h3>
+              <p class="menu-item-desc">أصابع بطاطس مقلية ذهبية ومقرمشة مع رشة من بهارات بامبل السرية اللذيذة.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">40 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="بطاطس كلاسيك مقرمشة">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 15. حلقات البصل -->
+          <article class="menu-item-card" data-category="fries" data-name="حلقات البصل المقرمشة onion rings">
+            <div class="menu-item-thumb">
+              <img src="assets/images/sides-onion.svg" alt="حلقات البصل المقرمشة" loading="lazy" />
+              <span class="item-badge">ذهبي 🧅</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">حلقات البصل المقرمشة</h3>
+              <p class="menu-item-desc">حلقات بصل مقرمشة وذهبية متبلة تقدم مع صوص الرانش الغني.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">50 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="حلقات البصل المقرمشة">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 16. صوص بامبل السري -->
+          <article class="menu-item-card" data-category="sauces" data-name="صوص بامبل السري secret sauce">
+            <div class="menu-item-thumb">
+              <img src="assets/images/sauce-bumble.svg" alt="صوص بامبل السري" loading="lazy" />
+              <span class="item-badge">حصري ✨</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">صوص بامبل السري</h3>
+              <p class="menu-item-desc">خلطة صوص بامبل المميزة التي تجمع بين الحلاوة الخفيفة واللسعة الكريمية اللذيذة.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">15 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="صوص بامبل السري">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 17. صوص الجبنة الشيدر -->
+          <article class="menu-item-card" data-category="sauces" data-name="صوص الجبنة الشيدر cheddar dip">
+            <div class="menu-item-thumb">
+              <img src="assets/images/sauce-cheddar.svg" alt="صوص الجبنة الشيدر" loading="lazy" />
+              <span class="item-badge">شيدر 🧀</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">صوص الجبنة الشيدر السايحة</h3>
+              <p class="menu-item-desc">كوب صوص جبنة شيدر أصلية دافئة وغنية لعشاق التغميس.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">20 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="صوص الجبنة الشيدر السايحة">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 18. صوص باربكيو مدخن -->
+          <article class="menu-item-card" data-category="sauces" data-name="صوص باربكيو مدخن bbq sauce">
+            <div class="menu-item-thumb">
+              <img src="assets/images/sauce-bbq.svg" alt="صوص باربكيو مدخن" loading="lazy" />
+              <span class="item-badge">مدخن 🪵</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">صوص باربكيو مدخن</h3>
+              <p class="menu-item-desc">صوص باربكيو على الطريقة الأمريكية بطعم التدخين الغني ولمسة عسل.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">15 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="صوص باربكيو مدخن">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 19. مشروبات غازية مثلجة -->
+          <article class="menu-item-card" data-category="drinks" data-name="مشروبات غازية مثلجة soft drinks pepsi">
+            <div class="menu-item-thumb">
+              <img src="assets/images/drink-soda.svg" alt="مشروبات غازية مثلجة" loading="lazy" />
+              <span class="item-badge">منعش ❄️</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">مشروبات غازية مثلجة</h3>
+              <p class="menu-item-desc">بيبسي / سفن آب / ميرندا مثلجة ومنعشة تروي عطشك مع البرجر.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">25 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="مشروبات غازية مثلجة">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 20. مياه معدنية -->
+          <article class="menu-item-card" data-category="drinks" data-name="مياه معدنية نقية mineral water">
+            <div class="menu-item-thumb">
+              <img src="assets/images/drink-water.svg" alt="مياه معدنية نقية" loading="lazy" />
+              <span class="item-badge">طبيعي 💧</span>
+            </div>
+            <div class="menu-item-body">
+              <h3 class="menu-item-title">مياه معدنية نقية</h3>
+              <p class="menu-item-desc">زجاجة مياه معدنية طبيعية نقية ومثلجة.</p>
+              <div class="menu-item-footer">
+                <div class="price-wrapper">
+                  <span class="suggested-price">12 <span>LE</span></span>
+                </div>
+                <button class="btn btn-primary btn-sm menu-order-btn" data-item="مياه معدنية نقية">اطلب الآن 📱</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- No Results Box -->
+        <div id="noResultsBox" class="no-results" style="display: none;">
+          <h3>🔍 لم يتم العثور على نتائج</h3>
+          <p>جرب البحث بكلمة تانية أو اختر قسماً آخر من المنيو أعلاه.</p>
+        </div>
+
+        <p class="offers-disclaimer" style="margin-top: 40px;" data-i18n="menu.note">
+          جميع الأسعار بالجنيه المصري (LE).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="assets/images/logo.svg" alt="Bumble Burger" />
+          </a>
+          <p class="footer-desc" data-i18n="footer.desc">
+            أقوى برجر مشوي على الجريل في أسيوط. طازج، مقرمش، ومصنوع بكل حب وجودة.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer.quickLinks">روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n="nav.home">الرئيسية</a></li>
+            <li><a href="menu.html" class="footer-link" data-i18n="nav.menu">المنيو</a></li>
+            <li><a href="offers.html" class="footer-link" data-i18n="nav.offers">العروض</a></li>
+            <li><a href="why-us.html" class="footer-link" data-i18n="nav.whyUs">ليه بامبل؟</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n="nav.about">عن المطعم والفرع</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer.contactTitle">معلومات الاتصال</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+201002194064" class="footer-link">📞 0100 219 4064</a></li>
+            <li><a href="tel:+201208027777" class="footer-link">📞 0120 802 7777</a></li>
+            <li><a href="https://wa.me/201002194064" target="_blank" rel="noopener noreferrer" class="footer-link">💬 واتساب المطعم</a></li>
+            <li><a href="about.html" class="footer-link">📍 الوليدية القبلية - أسيوط</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">التقييمات وNFC</h4>
+          <ul class="footer-links">
+            <li><a href="https://maps.app.goo.gl/h84HjgWTiHUpDgiaA" target="_blank" rel="noopener noreferrer" class="footer-link">⭐ تقييم Google Reviews</a></li>
+            <li><a href="about.html" class="footer-link">📲 كروت NFC بالفرع</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer.rights">© 2026 Bumble Burger. All rights reserved.</p>
+        <p>Assiut, Egypt • طعم يستاهل التجربة 🍔</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/201002194064" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Order on WhatsApp">
+    <span>💬</span>
+    <span class="tooltip" data-i18n="floating.whatsappTooltip">اطلب دلوقتي على واتساب!</span>
+  </a>
+
+  <nav class="mobile-bottom-bar" aria-label="Mobile Quick Bar">
+    <a href="menu.html" class="mobile-bottom-item active">
+      <span class="icon">🍔</span>
+      <span data-i18n="quickActions.menu">المنيو</span>
+    </a>
+    <a href="https://wa.me/201002194064" target="_blank" rel="noopener noreferrer" class="mobile-bottom-item highlight-order">
+      <span class="icon">💬</span>
+      <span data-i18n="quickActions.whatsapp">واتساب</span>
+    </a>
+    <a href="tel:+201002194064" class="mobile-bottom-item">
+      <span class="icon">📞</span>
+      <span data-i18n="quickActions.call">اتصال</span>
+    </a>
+    <a href="about.html" class="mobile-bottom-item">
+      <span class="icon">📍</span>
+      <span data-i18n="quickActions.location">الفرع</span>
+    </a>
+  </nav>
+
+  <!-- WhatsApp Order Modal -->
+  <div class="order-modal-backdrop" id="orderModalBackdrop">
+    <div class="order-modal">
+      <button class="modal-close-btn" id="closeOrderModalBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="whatsappDrawer.modalTitle">طلب سريع عبر واتساب 🍔</h3>
+      </div>
+      <div class="selected-item-box">
+        <div class="order-form-label" data-i18n="whatsappDrawer.productLabel">الصنف المحدد:</div>
+        <div class="selected-item-name" id="selectedItemName">-</div>
+      </div>
+      <div class="order-form-group">
+        <label for="orderNotes" class="order-form-label" data-i18n="whatsappDrawer.notesPlaceholder">
+          أي ملاحظات خاصة؟ (بدون بصل، صوص إضافي، درجة السواء...)
+        </label>
+        <textarea id="orderNotes" class="order-textarea" rows="3" placeholder="اكتب أي ملاحظات أو إضافات تحبها هنا..."></textarea>
+      </div>
+      <button id="sendWhatsAppOrderBtn" class="btn btn-whatsapp btn-lg" style="width: 100%;">
+        <span>📱</span> <span data-i18n="whatsappDrawer.sendOrderBtn">إرسال الطلب عبر واتساب</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Standard Universal Scripts -->
+  <script src="data/restaurant-data.js"></script>
+  <script src="js/whatsapp-order.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

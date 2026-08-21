@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="500" height="380">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#262633" />
+      <stop offset="100%" stop-color="#101015" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ED8936" />
+      <stop offset="100%" stop-color="#FFA000" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="380" rx="24" fill="url(#bgGrad)"/>
+  
+  <!-- Ambient Spotlight circles -->
+  <circle cx="250" cy="180" r="140" fill="#ED8936" opacity="0.12" />
+  <circle cx="250" cy="180" r="90" fill="#FFB800" opacity="0.08" />
+  
+  <!-- Outer glowing rings -->
+  <circle cx="250" cy="180" r="130" fill="none" stroke="#ED8936" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.25"/>
+  
+  <!-- Plate / Shadow -->
+  <ellipse cx="250" cy="275" rx="160" ry="24" fill="#050508" opacity="0.8"/>
+  <ellipse cx="250" cy="270" rx="140" ry="14" fill="#0C0C10" opacity="0.9" stroke="#ED8936" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- Main Center Graphic Item -->
+  <g transform="translate(130, 60)" filter="url(#shadow)">
+    <!-- Visual rendering based on type -->
+    
+        <!-- Brioche Bun -->
+        <path d="M20 70 C20 15, 220 15, 220 70 Z" fill="#E5983B" stroke="#D38222" stroke-width="2"/>
+        <ellipse cx="80" cy="42" rx="3.5" ry="2" fill="#FFF8DC"/>
+        <ellipse cx="120" cy="35" rx="3.5" ry="2" fill="#FFF8DC"/>
+        <ellipse cx="160" cy="45" rx="3.5" ry="2" fill="#FFF8DC"/>
+        <!-- Creamy Coleslaw -->
+        <path d="M15 72 Q60 86, 120 74 Q180 88, 225 72 L225 80 Q120 95, 15 80 Z" fill="#F7FAFC"/>
+        <circle cx="50" cy="76" r="2" fill="#9AE6B4"/>
+        <circle cx="100" cy="78" r="2" fill="#FEB2B2"/>
+        <circle cx="160" cy="76" r="2" fill="#9AE6B4"/>
+        <!-- Super Crispy Fried Chicken -->
+        <path d="M10 82 Q30 68, 60 84 Q90 65, 130 85 Q170 65, 200 84 Q225 75, 232 90 Q235 115, 210 122 Q170 128, 120 122 Q60 130, 20 120 Q5 110, 10 82 Z" fill="#C05621" stroke="#9C4221" stroke-width="2"/>
+        <!-- Crunchy Cornflake / Panko dots -->
+        <circle cx="45" cy="98" r="3" fill="#FBD38D"/>
+        <circle cx="85" cy="105" r="3.5" fill="#FBD38D"/>
+        <circle cx="130" cy="96" r="4" fill="#FBD38D"/>
+        <circle cx="170" cy="102" r="3.5" fill="#FBD38D"/>
+        <circle cx="205" cy="98" r="3" fill="#FBD38D"/>
+        <!-- Cheese & Ranch -->
+        <path d="M25 116 Q120 130, 215 116" stroke="#FFB800" stroke-width="6" stroke-linecap="round"/>
+        <!-- Bottom Bun -->
+        <path d="M20 126 C20 155, 220 155, 220 126 Z" fill="#D38222" stroke="#B76B13" stroke-width="2"/>
+        
+  </g>
+  
+  <!-- Floating Signature Badge -->
+  <g transform="translate(30, 30)">
+    <rect width="170" height="34" rx="17" fill="#181822" stroke="#ED8936" stroke-width="1.5"/>
+    <text x="85" y="21" font-family="'Outfit', 'Cairo', sans-serif" font-size="12" font-weight="800" fill="#FFB800" text-anchor="middle" letter-spacing="1">
+      NEW FLAVOR
+    </text>
+  </g>
+  
+  <!-- Bottom info bar -->
+  <rect x="30" y="315" width="440" height="42" rx="12" fill="#14141C" stroke="#2C2C38" stroke-width="1"/>
+  <text x="50" y="341" font-family="'Cairo', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+    هوني ماسترد تشيكن
+  </text>
+  <text x="450" y="340" font-family="'Outfit', sans-serif" font-size="13" font-weight="600" fill="#FFB800" text-anchor="end">
+    Honey Mustard Chicken
+  </text>
+</svg>

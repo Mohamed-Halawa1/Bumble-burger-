@@ -1,0 +1,389 @@
+/* ==============================================================================
+   BUMBLE BURGER - RESPONSIVE & RTL / LTR STYLES
+   ============================================================================== */
+
+/* ------------------------------------------------------------------------------
+   1. KEYFRAME ANIMATIONS
+   ------------------------------------------------------------------------------ */
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   2. RTL & LTR DIRECTIONAL SUPPORT
+   ------------------------------------------------------------------------------ */
+html[dir="rtl"] {
+  --font-current: var(--font-arabic);
+}
+
+html[dir="ltr"] {
+  --font-current: var(--font-latin);
+}
+
+html[dir="ltr"] .site-header .nav-menu {
+  flex-direction: row;
+}
+
+html[dir="ltr"] .modal-close-btn {
+  left: auto;
+  right: 20px;
+}
+
+html[dir="ltr"] .menu-search-input {
+  padding: 14px 20px 14px 48px;
+}
+
+html[dir="ltr"] .menu-search-icon {
+  right: auto;
+  left: 18px;
+}
+
+html[dir="ltr"] .floating-whatsapp {
+  right: 28px;
+  left: auto;
+}
+
+html[dir="ltr"] .floating-whatsapp .tooltip {
+  right: 74px;
+  left: auto;
+}
+
+html[dir="rtl"] .floating-whatsapp {
+  right: auto;
+  left: 28px;
+}
+
+html[dir="rtl"] .floating-whatsapp .tooltip {
+  right: auto;
+  left: 74px;
+}
+
+html[dir="ltr"] .footer-link:hover {
+  transform: translateX(4px);
+}
+
+html[dir="rtl"] .footer-link:hover {
+  transform: translateX(-4px);
+}
+
+/* ------------------------------------------------------------------------------
+   3. TABLETS & SMALL DESKTOPS (<= 1024px)
+   ------------------------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-grid {
+    gap: 30px;
+  }
+
+  .quick-action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   4. MOBILE DEVICES (<= 768px)
+   ------------------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Hamburger & Mobile Navigation */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nav-actions .btn {
+    display: none;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-height));
+    background: rgba(10, 10, 13, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 20px;
+    gap: 18px;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-menu-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 15px;
+  }
+
+  /* Hero Mobile */
+  .hero-section {
+    padding: 30px 0 50px;
+    text-align: center;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-trust-bar {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .hero-floating-card.top-card {
+    top: -5px;
+    right: 5px;
+    padding: 8px 14px;
+  }
+
+  .hero-floating-card.bottom-card {
+    bottom: 5px;
+    left: 5px;
+    padding: 8px 14px;
+  }
+
+  /* Quick Actions Mobile */
+  .quick-action-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .action-card {
+    padding: 18px 12px;
+  }
+
+  .action-card .card-icon-wrap {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .action-card .card-title {
+    font-size: 1.05rem;
+  }
+
+  .action-card .card-desc {
+    font-size: 0.75rem;
+  }
+
+  /* Menu Items Mobile */
+  .menu-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Why us mobile */
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    padding: 26px 18px;
+  }
+
+  /* Reviews & Location Mobile */
+  .review-box {
+    padding: 32px 20px;
+  }
+
+  .review-box-title {
+    font-size: 1.5rem;
+  }
+
+  .location-info-card {
+    padding: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Floating WhatsApp on mobile */
+  .floating-whatsapp {
+    bottom: 80px;
+    width: 54px;
+    height: 54px;
+    font-size: 1.7rem;
+  }
+
+  html[dir="rtl"] .floating-whatsapp {
+    left: 18px;
+  }
+
+  html[dir="ltr"] .floating-whatsapp {
+    right: 18px;
+  }
+
+  /* Mobile Sticky Bottom Conversion Bar */
+  .mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: rgba(12, 12, 16, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-gold);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    z-index: 980;
+    padding: 4px 8px;
+  }
+
+  .mobile-bottom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    gap: 3px;
+    text-decoration: none;
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-bottom-item .icon {
+    font-size: 1.15rem;
+  }
+
+  .mobile-bottom-item.active,
+  .mobile-bottom-item:active {
+    color: var(--color-gold);
+    background: rgba(255, 184, 0, 0.1);
+  }
+
+  .mobile-bottom-item.highlight-order {
+    color: #25D366;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-bottom-bar {
+    display: none;
+  }
+}

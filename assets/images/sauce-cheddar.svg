@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="500" height="380">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#262633" />
+      <stop offset="100%" stop-color="#101015" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ECC94B" />
+      <stop offset="100%" stop-color="#FFA000" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="380" rx="24" fill="url(#bgGrad)"/>
+  
+  <!-- Ambient Spotlight circles -->
+  <circle cx="250" cy="180" r="140" fill="#ECC94B" opacity="0.12" />
+  <circle cx="250" cy="180" r="90" fill="#FFB800" opacity="0.08" />
+  
+  <!-- Outer glowing rings -->
+  <circle cx="250" cy="180" r="130" fill="none" stroke="#ECC94B" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.25"/>
+  
+  <!-- Plate / Shadow -->
+  <ellipse cx="250" cy="275" rx="160" ry="24" fill="#050508" opacity="0.8"/>
+  <ellipse cx="250" cy="270" rx="140" ry="14" fill="#0C0C10" opacity="0.9" stroke="#ECC94B" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- Main Center Graphic Item -->
+  <g transform="translate(130, 60)" filter="url(#shadow)">
+    <!-- Visual rendering based on type -->
+    
+        <!-- Sauce Dipping Bowl -->
+        <ellipse cx="120" cy="110" rx="90" ry="45" fill="#2D3748" stroke="#4A5568" stroke-width="3"/>
+        <ellipse cx="120" cy="105" rx="75" ry="32" fill="#E53E3E"/>
+        <ellipse cx="120" cy="102" rx="60" ry="22" fill="#FFB800"/>
+        <!-- Sauce glossy highlight -->
+        <path d="M80 95 Q120 85, 160 95" stroke="#FEFCBF" stroke-width="4" fill="none" opacity="0.7" stroke-linecap="round"/>
+        <circle cx="100" cy="105" r="4" fill="#FFF" opacity="0.6"/>
+        
+  </g>
+  
+  <!-- Floating Signature Badge -->
+  <g transform="translate(30, 30)">
+    <rect width="170" height="34" rx="17" fill="#181822" stroke="#ECC94B" stroke-width="1.5"/>
+    <text x="85" y="21" font-family="'Outfit', 'Cairo', sans-serif" font-size="12" font-weight="800" fill="#FFB800" text-anchor="middle" letter-spacing="1">
+      MOLTEN CHEESE
+    </text>
+  </g>
+  
+  <!-- Bottom info bar -->
+  <rect x="30" y="315" width="440" height="42" rx="12" fill="#14141C" stroke="#2C2C38" stroke-width="1"/>
+  <text x="50" y="341" font-family="'Cairo', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">
+    صوص الجبنة الشيدر
+  </text>
+  <text x="450" y="340" font-family="'Outfit', sans-serif" font-size="13" font-weight="600" fill="#FFB800" text-anchor="end">
+    Molten Cheddar Dip
+  </text>
+</svg>
