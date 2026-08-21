@@ -202,10 +202,10 @@
                 </div>
 
                 <div class="cart-footer-actions">
-                  <button class="btn btn-primary btn-lg" id="proceedToCheckoutBtn" style="width: 100%;">
+                  <button class="btn btn-primary btn-sm cart-proceed-btn" id="proceedToCheckoutBtn">
                     <span>🛍️</span> <span>المتابعة لإتمام الطلب</span>
                   </button>
-                  <button class="btn btn-outline btn-sm" id="clearCartBtn" style="width: 100%; margin-top: 8px;">
+                  <button class="btn btn-outline btn-sm cart-clear-btn" id="clearCartBtn">
                     <span>🗑️</span> <span>تفريغ السلة</span>
                   </button>
                 </div>

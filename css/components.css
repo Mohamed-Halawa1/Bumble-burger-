@@ -294,6 +294,20 @@
 .checkout-totals-table { border-top: 1px solid var(--border-light); margin-top: 10px; padding-top: 8px; }
 .grand-total-line { color: var(--color-gold); font-size: 1.1rem; font-weight: 900; }
 
+.cart-footer-actions { display: grid; gap: 8px; }
+.cart-proceed-btn,
+.cart-clear-btn { width: 100%; }
+.cart-clear-btn {
+  color: #ff8a80;
+  border-color: rgba(244, 67, 54, .55);
+  background: rgba(244, 67, 54, .08);
+}
+.cart-clear-btn:hover {
+  color: #fff;
+  border-color: #f44336;
+  background: #c62828;
+}
+
 .checkout-footer { padding-top: 4px; }
 .checkout-footer #confirmOrderWhatsAppBtn {
   display: flex;
