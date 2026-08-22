@@ -166,6 +166,10 @@ html[dir="rtl"] .footer-link:hover {
     display: none;
   }
 
+  .nav-actions .account-menu-container .auth-user-button {
+    display: inline-flex;
+  }
+
   .nav-menu {
     position: fixed;
     top: var(--nav-height);

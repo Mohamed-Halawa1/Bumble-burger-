@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bumble Burger Admin</title><link rel="stylesheet" href="../../css/admin.css" />
+</head>
+<body class="admin-app">
+  <div id="adminRoot" class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-top"><a class="admin-brand" href="/admin/dashboard/"><span class="brand-mark">B</span><span>Bumble Burger <small>ADMIN CONSOLE</small></span></a><button id="closeSidebar" class="icon-button" aria-label="Close navigation">×</button></div>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a href="/admin/dashboard/" data-view="dashboard"><span>◈</span>Dashboard</a><a href="/admin/orders/" data-view="orders"><span>▤</span>Orders</a><a href="/admin/products/" data-view="products"><span>▦</span>Products</a><a href="/admin/customers/" data-view="customers"><span>♙</span>Customers</a><a href="/admin/analytics/" data-view="analytics"><span>◒</span>Analytics</a><a href="/admin/settings/" data-view="settings"><span>⚙</span>Settings</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="admin-user"><span class="avatar">A</span><span><b id="adminEmailLabel">Admin</b><small>Administrator</small></span></div><button id="adminLogout" class="logout-button">↪ Log out</button></div>
+    </aside>
+    <div class="admin-main"><header class="admin-header"><button id="openSidebar" class="icon-button menu-toggle" aria-label="Open navigation">☰</button><div><p class="eyebrow">OPERATIONS / <span id="breadcrumb">OVERVIEW</span></p><h1 id="pageTitle">Good morning, Admin</h1></div><div class="header-actions"><span class="live-dot">Live data</span><button id="refreshButton" class="icon-button" aria-label="Refresh orders">↻</button></div></header><main id="adminContent" class="admin-content"><div class="loading-state">Connecting to Firebase...</div></main></div>
+  </div>
+  <div id="orderModal" class="modal-backdrop" hidden><section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle"><button id="closeOrderModal" class="modal-close" aria-label="Close">×</button><div id="orderModalContent"></div></section></div>
+  <div id="toast" class="admin-toast" role="status"></div>
+  <script type="module" src="../../js/admin.js"></script>
+</body>
+</html>

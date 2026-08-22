@@ -39,7 +39,7 @@ logo_svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width
   </g>
 </svg>'''
 
-with open(os.path.join(assets_dir, "logo.svg"), "w", encoding="utf-8") as f:
+with open(os.path.join(assets_dir, "Logo.svg"), "w", encoding="utf-8") as f:
     f.write(logo_svg)
 
 # 2. Favicon SVG

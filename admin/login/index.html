@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bumble Burger Admin | Login</title>
+  <link rel="stylesheet" href="../../css/admin.css" />
+</head>
+<body class="admin-login-page">
+  <main class="login-card">
+    <a class="admin-brand" href="../../index.html"><span class="brand-mark">B</span><span>Bumble Burger <small>ADMIN CONSOLE</small></span></a>
+    <div class="login-intro"><p class="eyebrow">SECURE ACCESS</p><h1>Welcome back.</h1><p>Sign in to manage live restaurant operations.</p></div>
+    <form id="adminLoginForm" class="admin-form">
+      <label>Email<input id="adminEmail" type="email" autocomplete="username" required placeholder="admin@restaurant.com" /></label>
+      <label>Password<input id="adminPassword" type="password" autocomplete="current-password" required placeholder="Enter your password" /></label>
+      <button class="admin-button primary" type="submit">Sign in <span>→</span></button>
+      <p id="adminLoginStatus" class="form-status" role="status"></p>
+    </form>
+    <a class="back-link" href="../../index.html">← Back to customer website</a>
+  </main>
+  <script type="module" src="../../js/admin.js"></script>
+</body>
+</html>

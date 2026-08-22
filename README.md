@@ -79,6 +79,12 @@ All restaurant information is centrally managed in **`data/restaurant-data.js`**
 
 ## 🌐 How to Deploy Online
 
+### Telegram order notifications on Netlify
+- Add a Netlify Function environment variable named `TELEGRAM_BOT_TOKEN` containing the bot token.
+- Add `TELEGRAM_CHAT_ID` containing the destination group or chat ID.
+- Never put either value in browser JavaScript or commit them to the repository.
+- The confirmation button saves the order first, then calls `/.netlify/functions/telegram-order`.
+
 ### 1. Vercel / Netlify (Recommended - 1 Click)
 - Drag and drop the `bumble-burger-website` folder directly into [Netlify Drop](https://app.netlify.com/drop) or push to GitHub and deploy on [Vercel](https://vercel.com).
 - No build command required. Publish directory: `./`.

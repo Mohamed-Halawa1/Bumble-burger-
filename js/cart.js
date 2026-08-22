@@ -15,6 +15,7 @@
       this.items = [];
       this.selectedAreaId = 'walideyah';
       this.paymentMethod = 'cash'; // 'cash' | 'vodafone_cash'
+      this.isSubmittingOrder = false;
 
       this.config = (window.BumbleData && window.BumbleData.ORDER_CONFIG) ? window.BumbleData.ORDER_CONFIG : {
         restaurantName: "Bumble Burger",
@@ -147,6 +148,24 @@
       this.isInitialized = true;
       this.createCartElementsIfMissing();
       this.bindButtons();
+      window.addEventListener('bumble-auth-changed', event => {
+        const user = event.detail;
+        const nameInput = document.getElementById('custName');
+        const phoneInput = document.getElementById('custPhone');
+        if (user) {
+          if (nameInput && !nameInput.value) nameInput.value = user.displayName || '';
+          if (phoneInput && !phoneInput.value) phoneInput.value = user.phoneNumber || '';
+        }
+      });
+      window.addEventListener('bumble-profile-loaded', event => {
+        const profile = event.detail;
+        const nameInput = document.getElementById('custName');
+        const phoneInput = document.getElementById('custPhone');
+        if (profile) {
+          if (nameInput && !nameInput.value) nameInput.value = profile.name || '';
+          if (phoneInput && !phoneInput.value) phoneInput.value = profile.phone || '';
+        }
+      });
       this.updateBadges();
       this.renderCartDrawer();
     }
@@ -364,11 +383,11 @@
 
                   <!-- Submit Action Button -->
                   <div class="checkout-footer">
-                    <button type="submit" class="btn btn-whatsapp btn-lg" id="confirmOrderWhatsAppBtn" style="width: 100%;">
-                      <span>📱</span> <span>تأكيد وإرسال الطلب عبر واتساب</span>
+                    <button type="submit" class="btn btn-primary btn-lg" id="confirmOrderWhatsAppBtn" style="width: 100%;">
+                      <span>✅</span> <span>تأكيد الطلب</span>
                     </button>
                     <p class="checkout-secure-note">
-                      🔒 بالضغط على الزر سيتم فتح محادثة واتساب الرسمية مع مطعم Bumble Burger بأسيوط لتأكيد طلبك فوراً.
+                      🔒 سيتم حفظ طلبك بأمان وسيتواصل معك فريق المطعم قريباً لتأكيده.
                     </p>
                   </div>
 
@@ -386,10 +405,10 @@
           <div class="order-modal-backdrop" id="orderSuccessModalBackdrop">
             <div class="order-modal order-success-modal" style="max-width: 500px; text-align: center;">
               <div class="success-icon-wrap">🍔✨</div>
-              <h3 style="color: var(--color-gold); font-size: 1.6rem; margin-bottom: 12px;">تم تجهيز طلبك بنجاح!</h3>
+              <h3 style="color: var(--color-gold); font-size: 1.6rem; margin-bottom: 12px;">تم إرسال طلبك بنجاح!</h3>
               <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-primary); margin-bottom: 18px;">
-                تم فتح تطبيق واتساب ومرفق به تفاصيل أوردرك بالكامل.<br/>
-                <strong style="color: var(--color-red);">يرجى الضغط على زر "إرسال / Send" داخل الواتساب</strong> لتأكيد الطلب وبدء التحضير فوراً.
+                تم استلام طلبك وتسجيله بنجاح.<br/>
+                <strong style="color: var(--color-red);">سيتواصل معك فريق المطعم قريباً</strong> لتأكيد التفاصيل وموعد التوصيل.
               </p>
               <div class="success-order-box" id="successOrderBox">
                 <!-- Injected summary -->
@@ -398,9 +417,6 @@
                 <button class="btn btn-primary" id="returnToMenuBtn">
                   <span>🍔</span> <span>العودة للمنيو</span>
                 </button>
-                <a href="https://wa.me/${this.config.whatsappNumber}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-                  <span>💬</span> <span>فتح واتساب مجدداً</span>
-                </a>
               </div>
             </div>
           </div>
@@ -582,6 +598,22 @@
 
     openCheckoutModal() {
       this.renderCheckoutSummary();
+      const user = window.BumbleAuthUser;
+      const nameInput = document.getElementById('custName');
+      const phoneInput = document.getElementById('custPhone');
+      if (user) {
+        if (nameInput && !nameInput.value) nameInput.value = user.displayName || '';
+        if (phoneInput && !phoneInput.value) phoneInput.value = user.phoneNumber || '';
+      }
+      const profile = window.BumbleUserProfile;
+      if (profile) {
+        if (nameInput && profile.name) nameInput.value = profile.name;
+        if (phoneInput && profile.phone) phoneInput.value = profile.phone;
+        const areaInput = document.getElementById('custArea');
+        const addressInput = document.getElementById('custAddress');
+        if (areaInput && profile.area) areaInput.value = profile.area;
+        if (addressInput && profile.address) addressInput.value = profile.address;
+      }
       const backdrop = document.getElementById('checkoutModalBackdrop');
       if (backdrop) backdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -727,7 +759,9 @@
 
     // --- CHECKOUT VALIDATION & WHATSAPP SUBMISSION ---
 
-    handleCheckoutSubmit() {
+    async handleCheckoutSubmit() {
+      if (this.isSubmittingOrder) return;
+
       const nameInput = document.getElementById('custName');
       const phoneInput = document.getElementById('custPhone');
       const addressInput = document.getElementById('custAddress');
@@ -789,24 +823,62 @@
       }
       const area = this.config.deliveryAreas.find(a => a.id === this.selectedAreaId);
       const areaName = area ? area.name.ar : 'أسيوط';
+      const subtotal = this.getSubtotal();
+      const delivery = this.getDeliveryFee();
+      const total = this.getGrandTotal();
+      const submitButton = document.getElementById('confirmOrderWhatsAppBtn');
 
-      // Build Formatted WhatsApp Order Message
-      const message = this.generateWhatsAppMessage({
-        name,
-        phone,
-        areaName,
-        address,
+      if (!window.BumbleFirebase || typeof window.BumbleFirebase.saveOrder !== 'function') {
+        this.showToast('تعذر الاتصال بخدمة حفظ الطلبات. حاول مرة أخرى.');
+        return;
+      }
+
+      const order = {
+        authUid: window.BumbleAuthUser ? window.BumbleAuthUser.uid : null,
+        status: 'new',
+        customer: { name, phone },
+        delivery: {
+          areaId: this.selectedAreaId,
+          areaName,
+          address
+        },
+        items: this.items.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          notes: item.notes || ''
+        })),
+        totals: { subtotal, delivery, total },
         notes,
-        paymentMethod: this.paymentMethod,
-        vodaSender
-      });
+        payment: {
+          method: this.paymentMethod,
+          senderPhone: vodaSender || null
+        }
+      };
 
-      const whatsappUrl = `https://wa.me/${this.config.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      this.isSubmittingOrder = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.dataset.originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<span>⏳</span> <span>جارٍ حفظ الطلب...</span>';
+      }
 
-      // Open WhatsApp in new tab/app
-      window.open(whatsappUrl, '_blank');
+      try {
+        const orderId = await window.BumbleFirebase.saveOrder(order);
+        await this.notifyTelegram(order, orderId);
+      } catch (error) {
+        console.error('Error saving order to Firebase', error);
+        this.showToast('لم يتم حفظ الطلب. تحقق من الاتصال وحاول مرة أخرى.');
+        this.isSubmittingOrder = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = submitButton.dataset.originalText || submitButton.innerHTML;
+        }
+        return;
+      }
 
-      // Close Checkout & Show Success Modal
+      // Close Checkout & Show Success Modal after the Firestore write succeeds.
       this.closeCheckoutModal();
       this.showOrderSuccessModal({
         name,
@@ -818,6 +890,27 @@
 
       // Clear the cart for the next fresh order
       this.clearCart();
+      this.isSubmittingOrder = false;
+    }
+
+    async notifyTelegram(order, orderId) {
+      const endpoint = window.BUMBLE_TELEGRAM_NOTIFY_URL || '/.netlify/functions/telegram-order';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...order, orderId })
+        });
+
+        if (!response.ok) {
+          const responseBody = await response.text();
+          throw new Error(`Telegram notification failed with status ${response.status}: ${responseBody}`);
+        }
+      } catch (error) {
+        // The order is already saved; notification failure should not duplicate or cancel it.
+        console.error('Telegram notification error', error);
+      }
     }
 
     generateWhatsAppMessage(data) {

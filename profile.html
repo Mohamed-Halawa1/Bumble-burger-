@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حسابي | Bumble Burger</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/Logo.svg" />
+  <meta name="theme-color" content="#0A0A0D" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Bumble Burger Homepage">
+        <img src="assets/images/Logo.svg" alt="Bumble Burger Logo" />
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+          <li><a href="menu.html" class="nav-link">المنيو</a></li>
+          <li><a href="offers.html" class="nav-link">العروض</a></li>
+          <li><a href="about.html" class="nav-link">عن المطعم والفرع</a></li>
+          <li><a href="contact.html" class="nav-link">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="langToggleBtn" class="lang-toggle-btn" type="button">🌐 English</button>
+        <button id="hamburgerBtn" class="hamburger-btn" type="button" aria-label="فتح القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-page">
+    <div class="container profile-container">
+      <section class="profile-hero">
+        <span class="page-hero-badge">👤 حسابك</span>
+        <h1>بيانات العميل</h1>
+        <p>احفظ بيانات التوصيل مرة واحدة لتسريع طلباتك القادمة.</p>
+      </section>
+
+      <section id="profileLoginGate" class="profile-panel profile-login-gate" hidden>
+        <div class="profile-gate-icon">🔐</div>
+        <h2>سجّل الدخول أولاً</h2>
+        <p>يمكنك تسجيل الدخول من زر الحساب في أعلى الصفحة للوصول إلى بياناتك.</p>
+        <a class="btn btn-primary" href="index.html">العودة للرئيسية</a>
+      </section>
+
+      <section id="profileContent" class="profile-panel" hidden>
+        <div class="profile-identity">
+          <img id="profilePhoto" src="assets/images/favicon.svg" alt="صورة البروفايل" />
+          <div>
+            <h2 id="profileName">عميل Bumble Burger</h2>
+            <p id="profileEmail"></p>
+          </div>
+        </div>
+        <form id="profileForm" class="profile-form">
+          <div class="profile-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="profilePhone">رقم الهاتف</label>
+              <input class="form-input" id="profilePhone" type="tel" inputmode="tel" placeholder="+2010XXXXXXXX" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileArea">المنطقة / الحي</label>
+              <select class="form-select" id="profileArea">
+                <option value="">اختر المنطقة</option>
+                <option value="walideyah">الوليدية القبلية والبحرية</option>
+                <option value="qalta">شركة قلتة والنميس</option>
+                <option value="university">بوابة الجامعة وحي السادات</option>
+                <option value="yousry">يسري راغب وميدان المحطة والجمهورية</option>
+                <option value="azhar">منطقة الأزهر وموقف الأزهر</option>
+                <option value="moalemeen">المعلمين والأربعين ونزلة عبد اللاه</option>
+                <option value="assiut_jadida">أسيوط الجديدة</option>
+                <option value="other">منطقة أخرى داخل أسيوط</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="profileAddress">العنوان التفصيلي</label>
+            <textarea class="form-textarea" id="profileAddress" rows="4" placeholder="الشارع، رقم العمارة، الشقة، الدور، وعلامة مميزة" required></textarea>
+          </div>
+          <button class="btn btn-primary btn-lg" id="saveProfileBtn" type="submit">حفظ التغييرات</button>
+          <p class="profile-status" id="profileStatus" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="data/restaurant-data.js"></script>
+  <script src="js/app.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth-ui.js"></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>
